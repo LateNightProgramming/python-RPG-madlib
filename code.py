@@ -1,20 +1,6 @@
 import time as t
 import random as r
 
-sanitisation = 0
-censorblock = 0
-
-while sanitisation != 1 or 2:
-    sanitisation = input("do you wish to play a censored version of the game (removes common coarse language and possibly vulgar language i.e 'neet'), yes or no?  ")
-    if sanitisation == "yes":
-        print("you are proceeding with the censored version")
-        sanitisation = 1
-    elif sanitisation == "no":
-        print("you are proceeding with the uncensored version")
-        sanitisation = 2
-    elif sanitisation != "yes" or "no":
-        print("please input yes or no")
-
 name = input("enter your name here ")
 lost = input("are you lost or not? ")
 
@@ -30,11 +16,7 @@ if lost == "yes":
 elif lost == "no":
     lost = "luckily he is not lost as the south side of chicago is a very dangerous place "
 elif lost != "no" or "yes":
-        if sanitisation == 1:
-            censorblock = "half-baked muffin"
-        elif sanitisation == 2:
-            censorblock = "neet"
-    lost = "(you typed something other than yes or no you",censorblock,")"
+    lost = "(you typed something other than yes or no you neet)"
 
 print(name,"is stuck in the south side of chicago",lost)
 
