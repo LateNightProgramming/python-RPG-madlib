@@ -1,5 +1,3 @@
-#this shit probably dont work but i need to go to bed ill test it in the morning
-
 import time as t
 import random as r
 import string as s
@@ -117,7 +115,9 @@ while monsterhealth > 0:
     if monsterhealth <= 0:
         print("you win")
     elif playerhealth <= 0:
-        print(censor)
+        defeatlist = ["was slain by", "was killed by", ""]
+        print("")
+        print("ahh you know what")
         t.sleep(0.75)
         print("YOU KNOW WHAT")
         string = "you know what im just crash the whole program SCREW YOU"
