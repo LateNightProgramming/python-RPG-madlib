@@ -1,14 +1,37 @@
+#this shit probably dont work but i need to go to bed ill test it in the morning
+
 import time as t
 import random as r
+import string as s
 
-name = input("enter your name here ")
+whilepass = False
+censorgage = []
+
+while whilepass == False:
+    censor = input("do you wish to play the censored version of the game (removes common harsh language aswell as potentionally vulgar phrases i.e 'neet' ")
+    if censor == "yes":
+        censorgage = True
+        print("you are playing the censored version of the game")
+        whilepass = True
+    elif censor == "no":
+        censorgage = False
+        print("you are playing the uncensored version of the game")
+        whilepass = True
+
+name = input("\nenter your name here ")
 lost = input("are you lost or not? ")
 
 heshe = r.randint(0,1)
 
+string = "(you typed something other than yes or no you neet)"
+if censorgage == True:
+    censor = string.replace("neet", "half-baked muffin")
+else:
+    censor = string
+
 if heshe == 1:
     heshe = "he"
-else:
+elif heshe == 0:
     heshe = "she"
 
 if lost == "yes":
@@ -16,7 +39,7 @@ if lost == "yes":
 elif lost == "no":
     lost = "luckily he is not lost as the south side of chicago is a very dangerous place "
 elif lost != "no" or "yes":
-    lost = "(you typed something other than yes or no you neet)"
+    lost = censor
 
 print(name,"is stuck in the south side of chicago",lost)
 
@@ -61,11 +84,17 @@ if tutorial == "yes":
     print("attacking lowers the monsters health, guarding has a 50% chance to block the monsters attacks, you take your turn first, once your turn is over the mosnter has a turn, then repeat")
 else:
     print("tutorial skipped")
+    
+    string = "you lose you neet, i didnt even think it was possible to lose"
+if censorgage == True:
+    censor = string.replace("neet", "illwitted bafoon")
+else:
+    censor = string
 
-print("monster health",monsterhealth)
-print("player health",playerhealth)
+print("\n",name,"health",playerhealth)
+print(monster,"health",monsterhealth)
 while monsterhealth > 0:
-    choice = input("1.attack 2.defend")
+    choice = input("\n1.attack 2.defend ")
     if choice == "1":
         monsterhealth -= playerdamage
         print("you attacked the",monster)
@@ -81,14 +110,20 @@ while monsterhealth > 0:
         playerdamage = 1
         print("the",monster,"defended itself")
     monsterai = r.randint(0,1)
-    print("player health", playerhealth)
-    print("monster health", monsterhealth)
-    
+    print(name,"health", playerhealth)
+    print(monster,"health", monsterhealth)
+    monsterdamage = 1
+    playerdamage = 2
     if monsterhealth <= 0:
         print("you win")
     elif playerhealth <= 0:
-        print("you lose you ilwitted bafoon, i didnt even think it was possible to lose")
+        print(censor)
         t.sleep(0.75)
         print("YOU KNOW WHAT")
-        print("you know what im just crash the whole program SCREW YOU")
+        string = "you know what im just crash the whole program SCREW YOU"
+        if censorgage == True:
+            censor = string.replace("SCREW YOU", "GOODBYE")
+        else:
+            censor = string
+        print(censor)
         quit()
