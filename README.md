@@ -1,3 +1,5 @@
+btw this shit definetily no worky by im tired i need sleep ill test it in the morning ig idfk
+
 func setup {
   <interpreter = programiz.com>
 
