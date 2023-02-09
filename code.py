@@ -1,3 +1,4 @@
+
 #WARNING! program is currently not fully functional
 
 import time as t
@@ -8,15 +9,18 @@ censorgage = []
 percens = []
 
 def wronganswer():
+    global percens
     if percens == True:
         print('you have chosen an option outside of the inputs parameters')
-        precens = False
+        percens = False
         censorchoice()
     else:
         print("you have chosen an option outside of the games parameters you neet")
         print(percens)
     
 def censorchoice():
+    global censorgage
+    global precens
     censor = input("do you wish to play the censored version of the game (removes common harsh language aswell as potentionally vulgar phrases i.e 'neet' ")
     if censor == "yes":
         censorgage = True
@@ -27,6 +31,7 @@ def censorchoice():
     else:
         precens = True
         wronganswer()
+        print(precens)
         
 censorchoice()
         
@@ -104,13 +109,21 @@ if censorgage == True:
 else:
     censor = string
 
-print("\n",name,"health",playerhealth)
-print(monster,"health",monsterhealth)
-while monsterhealth > 0:
+def genericbattle():
+    global monsterhealth
+    global monsterai
+    global monsterdamage
+    global playerhealth
+    global playerdamage
+    global defeatlist
+    global defeatchoice
+    global player
+    global monster
     choice = input("\n1.attack 2.defend ")
     if choice == "1":
         monsterhealth -= playerdamage
         print("you attacked the",monster)
+        playerdamage = 2
     elif choice == "2":
         monsterdamage = 0
         print("you raised your shield, defending yourself from the",monster)
@@ -126,12 +139,12 @@ while monsterhealth > 0:
     print(name,"health", playerhealth)
     print(monster,"health", monsterhealth)
     monsterdamage = 1
-    playerdamage = 2
     if monsterhealth <= 0:
         print("you win")
     elif playerhealth <= 0:
-        defeatlist = ["was slain by", "was killed by", ""]
-        print("")
+        defeatlist = ["was slain by", "was killed by", "was mauled by"]
+        defeatchoice = r.choice(defeatlist)
+        print(name,defeatchoice,monster)
         print("ahh you know what")
         t.sleep(0.75)
         print("YOU KNOW WHAT")
@@ -142,3 +155,9 @@ while monsterhealth > 0:
             censor = string
         print(censor)
         quit()
+    else:
+        genericbattle()
+
+print("\n",name,"health",playerhealth)
+print(monster,"health",monsterhealth)
+genericbattle()
