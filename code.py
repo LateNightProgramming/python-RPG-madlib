@@ -1,20 +1,35 @@
+#WARNING! program is currently not fully functional
+
 import time as t
 import random as r
 import string as s
 
-whilepass = False
 censorgage = []
+percens = []
 
-while whilepass == False:
+def wronganswer():
+    if percens == True:
+        print('you have chosen an option outside of the inputs parameters')
+        precens = False
+        censorchoice()
+    else:
+        print("you have chosen an option outside of the games parameters you neet")
+        print(percens)
+    
+def censorchoice():
     censor = input("do you wish to play the censored version of the game (removes common harsh language aswell as potentionally vulgar phrases i.e 'neet' ")
     if censor == "yes":
         censorgage = True
         print("you are playing the censored version of the game")
-        whilepass = True
     elif censor == "no":
         censorgage = False
         print("you are playing the uncensored version of the game")
-        whilepass = True
+    else:
+        precens = True
+        wronganswer()
+        
+censorchoice()
+        
 
 name = input("\nenter your name here ")
 lost = input("are you lost or not? ")
