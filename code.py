@@ -1,4 +1,3 @@
-
 #WARNING! program is currently not fully functional
 
 import time as t
@@ -34,11 +33,22 @@ def censorchoice():
         print(precens)
         
 censorchoice()
-        
 
+global playerXP
+playerXP = 0
+global level
+level = 1
+global levelupcost
+levelupcost = 500
+
+#start tutorial/intro section
+
+global player
+print('a lot is still in development and not functional, also ive been coding 2 hours ontop of schhol on 4 hours of sleep so im too tired to test shit, ill work on fixing the stuff that wont work tommorow ig')
 name = input("\nenter your name here ")
 lost = input("are you lost or not? ")
 
+global heshe
 heshe = r.randint(0,1)
 
 string = "(you typed something other than yes or no you neet)"
@@ -61,6 +71,7 @@ elif lost != "no" or "yes":
 
 print(name,"is stuck in the south side of chicago",lost)
 
+global monster
 monster = input("input a scary monster ")
 movement = input("input a type of movement ")
 
@@ -111,14 +122,12 @@ else:
 
 def genericbattle():
     global monsterhealth
-    global monsterai
-    global monsterdamage
     global playerhealth
-    global playerdamage
+    global monsterdamage
     global defeatlist
     global defeatchoice
-    global player
-    global monster
+    global monsterai
+    global playerdamage
     choice = input("\n1.attack 2.defend ")
     if choice == "1":
         monsterhealth -= playerdamage
@@ -158,6 +167,67 @@ def genericbattle():
     else:
         genericbattle()
 
+def wonbattle():
+    global playerXP
+    global level
+    global levelupcost
+    if playerXP > levelupcost:
+        level += 1
+        levelupcost *= 1.5
+        wonbattle()
+    else:
+        print('level up complete')
+    
+
 print("\n",name,"health",playerhealth)
 print(monster,"health",monsterhealth)
 genericbattle()
+wonbattle()
+
+#end tutorial section/intro
+
+randomencounter = []
+
+def randomencounter():
+    global randomencounter
+    randomencounter = r.choice([True or False or '1' or '2' or '3' or '4'])
+    if randomencounter == True:
+        print('a battle has started!/n')
+        genericbattle()
+
+def forestsectionleft():
+    print('the left path seems rather damp')
+
+def forestsectionright():
+    print('the right path is much thicker, who knows whats lurking in the thick mass of flaura')
+
+def forestsection():
+    print('you have entered the spooky forest! Rumor has it that the secret forest key lurks at the end\n')
+    print('you begin navigating the dark twisting forest')
+    while lrchoicesectloop == True:
+        lrchoice = ('you come upon a fork in the path, do you go left or right')
+        if lrchoice == 'left':
+            print('you went left')
+            lrchoicesectloop = False
+            forestsectionleft()
+        elif lrchoice == 'right':
+            print('you went right')
+            lrchoicesectloop = False
+            forestsectionright()
+        else:
+            print('you choose an option outside of the games paraneters')
+    
+def chooselocation():
+    print('choose which section to go to')
+    choiceloc = input('1 = forest, 2 = cave, 3 = sky realm, 4 = death castle')
+    if choiceloc == '1':
+        forestsection()
+    if choiceloc == '2':
+        cavesection()
+    if choiceloc == '3':
+        skyrealm()
+    if choiceloc == '4':
+        deathcastle()
+    if choiceloc != '1' or '2' or '3' or '4':
+        print('you choose an option other than the 4 shown, this may be because you typed the place name instead of its corresponding number')
+        chooselocation()
