@@ -1,5 +1,4 @@
 #WARNING! program is currently not fully functional
-#still shit
 
 import time as t
 import random as r
@@ -98,7 +97,8 @@ t.sleep(0.3)
 print(".")
 print("OH NO!",heshe,"caught",name,", whatever will he do?")
 
-monsterhealth = 10
+monstermax = 10
+monsterhealth = monstermax
 playerhealth = 15
 monsterdamage = 1
 playerdamage = 2
@@ -116,8 +116,17 @@ if censorgage == True:
 else:
     censor = string
 
+
+def monsterhealthfunc():
+    global monsterhealth
+    global monstermax
+    monsterhealth = monstermax
+    genericbattle()
+
+
 def genericbattle():
     global monsterhealth
+    global monstermax
     global playerhealth
     global monsterdamage
     global defeatlist
@@ -196,34 +205,35 @@ def randomencounter():
         genericbattle()
 
 def forestsectionleft():
-    global lrchoicesectloop
-    lrchoicesectloop = False
-
     print('the left path seems rather damp')
+    monsterhealthfunc()
+    print('won')
+    quit()
 
 def forestsectionright():
     print('the right path is much thicker, who knows whats lurking in the thick mass of flaura')
+    monsterhealthfunc()
+    print('won')
+    quit()
 
-lrchoicesectloop = True
+def forestselect():
+    global lrchoice
+    lrchoice = input('do you wish to go left or right: ')
+    if lrchoice == 'left':
+        print('you went left')
+        forestsectionleft()
+    elif lrchoice == 'right':
+        print('you went right')
+        forestsectionright()
+    else:
+        print('please choose left or right')
+        forestselect()
 
 def forestsection():
     global lrchoice
-    global lrchoicesectloop
-    lrchoicesectloop = True
     print('you have entered the spooky forest! Rumor has it that the secret forest key lurks at the end\n')
     print('you begin navigating the dark twisting forest')
-    lrchoice = input('do you wish to go left or right?')
-    while lrchoicesectloop == True:
-        if lrchoice == 'left':
-            print('you went left')
-            forestsectionleft()
-        elif lrchoice == 'right':
-            print('you went right')
-            lrchoicesectloop = False
-            forestsectionright()
-        else:
-            print('you choose an option outside of the games paraneters')
-            forestsection()
+    forestselect()
     
 def chooselocation():
     print('test')
